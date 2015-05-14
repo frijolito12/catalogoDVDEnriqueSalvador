@@ -208,5 +208,10 @@ namespace App_CatalogoCD
                 btnGenerar.Hide();
             }
         }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
