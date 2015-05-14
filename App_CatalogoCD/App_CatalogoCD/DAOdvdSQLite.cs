@@ -95,6 +95,41 @@ namespace App_CatalogoCD
 			lector.Close();
 			return resultado;
 		}
+
+        public List<dvd> SeleccionarPorPais(string codigo)
+        {
+            List<dvd> resultado = new List<dvd>();
+
+
+            SQLiteCommand cmd = new SQLiteCommand();
+            cmd.Connection = conexion;
+            cmd.CommandText = "sp_ListarPorPais";
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@p", codigo);
+
+            // construimos un datareader y ejecutamos el comando sql
+            ////////////////////////////////////////////////////////////////
+            SQLiteDataReader lector = cmd.ExecuteReader();
+            //recuperamos los datos y volcamos en el resultado a devolver
+
+            while (lector.Read())
+            {
+                dvd unDVD = new dvd();
+                unDVD.Codigo = ushort.Parse(lector["codigo"].ToString());
+                unDVD.Titulo = lector["titulo"].ToString();
+                unDVD.Artista = lector["artista"].ToString();
+                unDVD.Pais = lector["pais"].ToString();
+                unDVD.Compania = lector["compania"].ToString();
+                unDVD.Precio = decimal.Parse(lector["precio"].ToString());
+                unDVD.Anio = ushort.Parse(lector["anio"].ToString());
+
+                resultado.Add(unDVD);
+            }
+            lector.Close();
+            return resultado;
+        }
+
+
 		/// <summary>
 		/// Elimina de la tabla el código indicado
 		/// </summary>

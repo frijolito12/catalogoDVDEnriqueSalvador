@@ -12,7 +12,7 @@ namespace App_CatalogoCD
 		static public ushort contadorParaCodigo = 100;
 
         List<dvd> _catalogoDVD = new List<dvd>();
-        DAOdvd dao = new DAOdvd();
+        DAOdvdSQLite dao = new DAOdvdSQLite();
 		//DAOdvdSQLite dao = new DAOdvdSQLite();
 
         /// <summary>
