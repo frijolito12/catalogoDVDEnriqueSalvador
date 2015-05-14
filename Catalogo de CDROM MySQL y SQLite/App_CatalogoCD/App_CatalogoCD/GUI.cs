@@ -12,6 +12,7 @@ namespace App_CatalogoCD
 {
     public partial class GUI : Form
     {
+        Catalogo c = new Catalogo();
         public GUI()
         {
             InitializeComponent();
@@ -19,7 +20,9 @@ namespace App_CatalogoCD
 
         private void label1_Click(object sender, EventArgs e)
         {
-
+            c.LeerDVD();
+            MessageBox.Show(c.ToString());
+            
         }
 
         private void button8_Click(object sender, EventArgs e)
