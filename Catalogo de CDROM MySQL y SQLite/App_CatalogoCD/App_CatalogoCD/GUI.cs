@@ -12,10 +12,17 @@ namespace App_CatalogoCD
 {
     public partial class GUI : Form
     {
-        Catalogo c = new Catalogo();
+        static Catalogo c = new Catalogo();
         public GUI()
         {
             InitializeComponent();
+        }
+        static void AnadirDVD()
+        {
+            string codigo =  string.Empty;
+            TextBox textBox1 = new TextBox();
+            codigo = textBox1.Text;
+            c.AddEntrada(codigo);
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -28,6 +35,29 @@ namespace App_CatalogoCD
         private void button8_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            c.LeerDVD();
+            MessageBox.Show(c.Xml);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            textBox1.Enabled = true;
+            AnadirDVD();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GUI_Load(object sender, EventArgs e)
+        {
+            textBox1.Enabled = false;
+            
         }
     }
 }
