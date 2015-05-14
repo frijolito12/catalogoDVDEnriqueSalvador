@@ -17,13 +17,25 @@ namespace App_CatalogoCD
         {
             InitializeComponent();
         }
-        static void AnadirDVD()
+         void AnadirDVD()
         {
             string codigo =  string.Empty;
-            TextBox textBox1 = new TextBox();
             codigo = textBox1.Text;
             c.AddEntrada(codigo);
         }
+         void BorrarDVD()
+        {
+            string codigo = string.Empty;
+            codigo = textBox1.Text;
+            if (c.BorrarDVD(codigo) != 0)
+               MessageBox.Show("Operación realizada");
+            else
+                MessageBox.Show("Registro no encontrado");
+        }
+         static void VolcarAFichero()
+         {
+             c.XmlAFichero();
+         }
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -59,5 +71,23 @@ namespace App_CatalogoCD
             textBox1.Enabled = false;
             
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            textBox1.Enabled = true;
+            BorrarDVD();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            VolcarAFichero();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            c.FiltrarPorPais();
+            MessageBox.Show(c.ToString());
+        }
+       
     }
 }

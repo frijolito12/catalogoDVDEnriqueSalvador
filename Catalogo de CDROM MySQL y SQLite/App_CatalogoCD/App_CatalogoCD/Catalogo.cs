@@ -126,7 +126,7 @@ namespace App_CatalogoCD
         {
             // Manda a fichero (c:/salida.xml), la lista de los CDROM en formato XML
             // Creo un flujo hacia el fichero
-			String ruta = "c:\\basura\\salida.xml";
+			String ruta = "salida.xml";
             FileStream fs1 = new FileStream(@ruta, FileMode.Create);
             // Guardo el dispositivo de salida (pantalla) en tmp
             TextWriter tmp = Console.Out;
